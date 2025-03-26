@@ -10,11 +10,7 @@ library(metRscreen)
 library(bslib)
 
 # open csv file of papers
-metRscreen(screen.file = "~/Desktop/MSc EEB/WD/metaanalysis/MA.csv")
 
-
-#Alternative q: Is germination timing of alpine and arctic plants advancing as a result of climate warming?
-m# open csv file of papers
 metRscreen(screen.file = "~/Desktop/MSc EEB/WD/metaanalysis/flowering75.csv")
 
 #meta digitise
@@ -185,5 +181,48 @@ se_calc(-4.2,0.0005,30)#1.057
 se_calc(-4.15,0.0246,15)#1.595
 
 #meta-analysis
+install.packages("metafor",dependencies=TRUE,repos="https://cloud.r-project.org")
+library(metafor)
+
+ma_data <- read.csv("ma_data.csv", header = TRUE)
+
+#initial plot
+plot(ma_data$slope,(1/ma_data$se),xlab="Slope",ylab="Precision, (1/se)")
+
+#meta-analysis 
+meta1<-rma(yi=slope,sei=se,mods=~1,data=ma_data)
+meta1
+
+#meta-analysis controlling for latitude 
+meta2<-rma(yi=slope,sei=se,mods=~latitude,data=ma_data)
+meta2
+
+library(dplyr)
+ma_data2 <- ma_data %>% filter(se2 > 0) #removed 0 
+ma_data2$se2<-ma_data2$se^2
+meta3<-rma.mv(yi=slope,V=se2,mods=~latitude + temperature, random=~1|taxon,data=ma_data2)
+meta3
+
+funnel(meta3)
+forest(meta1,cex.lab=0.8,cex.axis=0.8,addfit=TRUE,shade="zebra",slab = ma_data$taxon,header ="Taxon", col="palevioletred")
+abline(v = 0, col = "darkred", lwd = 2, lty = 2) 
+
+#latitude
+library(ggplot2)
+ggplot(ma_data, aes(x = latitude, y = slope)) +
+  geom_point() +  # Scatter plot
+  geom_smooth(method = "lm", se = TRUE) +  # Linear regression with confidence interval
+  labs(x = "Latitude", y = "Slope", title = "Regression of Slope vs Latitude") +
+  theme_minimal()
+
+
+
+
+
+
+
+
+
+
 
 
