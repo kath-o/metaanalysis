@@ -189,40 +189,57 @@ ma_data <- read.csv("ma_data.csv", header = TRUE)
 #initial plot
 plot(ma_data$slope,(1/ma_data$se),xlab="Slope",ylab="Precision, (1/se)")
 
-#meta-analysis 
-meta1<-rma(yi=slope,sei=se,mods=~1,data=ma_data)
-meta1
-
-#meta-analysis controlling for latitude 
-meta2<-rma(yi=slope,sei=se,mods=~latitude,data=ma_data)
-meta2
-
 library(dplyr)
 ma_data2 <- ma_data %>% filter(se2 > 0) #removed 0 
+
+#meta-analysis 
+meta1<-rma(yi=slope,sei=se,mods=~1,data=ma_data2)
+meta1
+
+#meta-analysis - first key result
+meta2<-rma.mv(yi=slope,V=se2,random=~1|taxon,data=ma_data2)
+meta2
+
+
 ma_data2$se2<-ma_data2$se^2
 meta3<-rma.mv(yi=slope,V=se2,mods=~latitude + temperature, random=~1|taxon,data=ma_data2)
-meta3
+summary(meta3)
 
-funnel(meta3)
-forest(meta1,cex.lab=0.8,cex.axis=0.8,addfit=TRUE,shade="zebra",slab = ma_data$taxon,header ="Taxon", col="palevioletred")
-abline(v = 0, col = "darkred", lwd = 2, lty = 2) 
+
+forest(meta1,cex.lab=0.8,cex.axis=0.8,addfit=TRUE,shade="zebra",slab = ma_data2$taxon,header ="Taxon", col="palevioletred")
+abline(v = 0, col = "violetred3", lwd = 1, lty = 1) 
 
 #latitude
+regplot(meta3,mod="latitude",bg="honeydew",ylab="Effect size (days/°C)", xlab="Latitude")
+
+?regplot
+
+#funnel? 
+funnel(meta3,level=c(90, 95, 99),lty=1,shade=c("#E0E0E0", "#EBEBEB", "#FAFAFA"),back="white" , legend=TRUE)
+
+
+#map figure
+install.packages(c("terra", "sf", "ggplot2", "rnaturalearth", "rnaturalearthdata"))
+library(terra)
+library(sf)
 library(ggplot2)
-ggplot(ma_data, aes(x = latitude, y = slope)) +
-  geom_point() +  # Scatter plot
-  geom_smooth(method = "lm", se = TRUE) +  # Linear regression with confidence interval
-  labs(x = "Latitude", y = "Slope", title = "Regression of Slope vs Latitude") +
-  theme_minimal()
+library(rnaturalearth)
+library(rnaturalearthdata)
 
+mapdata <- read.csv("~/Desktop/MSc EEB/WD/metaanalysis/ma_data_map.csv", header = T)
 
+mapdata$longitude <- as.numeric(mapdata$longitude)
+mapdata$latitude <- as.numeric(mapdata$latitude)
+# Convert to terra SpatVector
+sites_vect <- vect(mapdata, geom = c("longitude", "latitude"), crs = "EPSG:4326")
+sites_df <- as.data.frame(sites_vect, xy = TRUE)
 
+world_sf <- ne_countries(scale = "medium", returnclass = "sf")
+world_vect <- vect(world_sf)  # convert to terra SpatVector
 
-
-
-
-
-
+# Convert SpatVector to data.frame
+plot(world_vect, col = "lightblue1", border = "grey40", xlab = 'Longitude', ylab="Latitude")
+points(sites_vect, col = "violetred2", pch = 20, cex =1.2)
 
 
 

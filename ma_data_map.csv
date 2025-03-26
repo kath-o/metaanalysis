@@ -1,0 +1,87 @@
+﻿taxon,slope,se,temperature,location,latitude,longitude
+Rhododendron_aureum,-3.9,0.71,may,hokkaido,43.2203,142.7767
+Androsace_septentrionalis,-0.8,1.675,june,nunavut_archipelago,79.8333,-94.5
+Arnica_angustifolia,-2.1,0.534,june,nunavut_mainland,65.4215,-81.4
+Arnica_angustifolia,-2.5,0.871,june,nunavut_archipelago,79.8333,-94.5
+Chamerion_latifolium,-0.9,0.534,june,nunavut_mainland,65.4215,-81.4
+Chamerion_latifolium,-0.3,0.58,june,nunavut_archipelago,79.8333,-94.5
+Diapensia_lapponica,0.3,1.682,june,nunavut_mainland,65.4215,-81.4
+Diapensia_lapponica,-4,1.189,june,nunavut_archipelago,79.8333,-94.5
+Dryas_integrifolia,-0.9,0.534,june,nunavut_mainland,65.4215,-81.4
+Dryas_integrifolia,-2.1,0,june,nunavut_archipelago,79.8333,-94.5
+Erigeron_compositus,-1.8,1.068,june,nunavut_archipelago,79.8333,-94.5
+Erysimum_pallasii,-2.3,0.731,june,nunavut_archipelago,79.8333,-94.5
+Eutrema_edwardsii,0,0,june,nunavut_mainland,65.4215,-81.4
+Eutrema_edwardsii,-3.3,0,june,nunavut_archipelago,79.8333,-94.5
+Pedicularis_arctica,-3.8,0.969,june,nunavut_mainland,65.4215,-81.4
+Pedicularis_arctica,-3.9,0,june,nunavut_archipelago,79.8333,-94.5
+Pedicularis_capitata,-2.6,0.762,june,nunavut_mainland,65.4215,-81.4
+Pedicularis_capitata,-2.1,0.6,june,nunavut_archipelago,79.8333,-94.5
+Pedicularis_flammea,0.7,1.675,june,nunavut_mainland,65.4215,-81.4
+Pedicularis_flammea,-2.2,0.989,june,nunavut_archipelago,79.8333,-94.5
+Pedicularis_hirsuta,-0.7,0.873,june,nunavut_mainland,65.4215,-81.4
+Pedicularis_hirsuta,-2.2,0,june,nunavut_archipelago,79.8333,-94.5
+Pedicularis_lapponica,-2,0.756,june,nunavut_mainland,65.4215,-81.4
+Pedicularis_lapponica,-8.1,0,june,nunavut_archipelago,79.8333,-94.5
+Ranunculus_nivalis,-3.5,0,june,nunavut_archipelago,79.8333,-94.5
+Ranunculus_sulphureus,-1.6,0.564,june,nunavut_archipelago,79.8333,-94.5
+Saxifraga_aizoides,-2.2,1.314,june,nunavut_mainland,65.4215,-81.4
+Saxifraga_aizoides,-2.7,0.955,june,nunavut_archipelago,79.8333,-94.5
+Saxifraga_cernua,-1.7,0.741,june,nunavut_mainland,65.4215,-81.4
+Saxifraga_cernua,-1.8,0.499,june,nunavut_archipelago,79.8333,-94.5
+Saxifraga_cespitosa,-0.8,0.809,june,nunavut_mainland,65.4215,-81.4
+Saxifraga_cespitosa,-1.7,0.45,june,nunavut_archipelago,79.8333,-94.5
+Saxifraga_flagellaris,-2.1,0.611,june,nunavut_archipelago,79.8333,-94.5
+Saxifraga_hirculus,-0.4,0.951,june,nunavut_mainland,65.4215,-81.4
+Saxifraga_hirculus,-2.1,0.699,june,nunavut_archipelago,79.8333,-94.5
+Saxifraga_oppositifolia,-0.5,1.021,june,nunavut_mainland,65.4215,-81.4
+Saxifraga_oppositifolia,-2.8,0,june,nunavut_archipelago,79.8333,-94.5
+Saxifraga_tricuspidata,-1.5,0.724,june,nunavut_mainland,65.4215,-81.4
+Saxifraga_tricuspidata,-2.3,0,june,nunavut_archipelago,79.8333,-94.5
+Tofieldia_pusilla,-1.9,0.572,june,nunavut_mainland,65.4215,-81.4
+Tofieldia_pusilla,-3.6,1.009,june,nunavut_archipelago,79.8333,-94.5
+Achillea_millefolium ,-7.67,1.46,mean_monthly,gothic,38.9583,-106.98833
+Aconitum_columbianum ,-5.96,1.12,mean_monthly,gothic,38.9583,-106.98833
+Amelanchier_pumila ,-7.19,1.12,mean_monthly,gothic,38.9583,-106.98833
+Amerosedum_lanceolatum ,-5.47,0.85,mean_monthly,gothic,38.9583,-106.98833
+Androsace_septentrionalis ,-7.9,0.88,mean_monthly,gothic,38.9583,-106.98833
+Anticlea_elegans ,-5.21,0.61,mean_monthly,gothic,38.9583,-106.98833
+Boechera_stricta ,-6.99,1.01,mean_monthly,gothic,38.9583,-106.98833
+Campanula_rotundifolia ,-8,1.03,mean_monthly,gothic,38.9583,-106.98833
+Cardamine_cordifolia ,-5.95,1.28,mean_monthly,gothic,38.9583,-106.98833
+Castilleja_sulphurea ,-6.5,1.1,mean_monthly,gothic,38.9583,-106.98833
+Claytonia_lanceolata ,-7.06,0.85,mean_monthly,gothic,38.9583,-106.98833
+Collomia_linearis ,-4.2,1.27,mean_monthly,gothic,38.9583,-106.98833
+Delphinium_barbeyi ,-7.62,1.25,mean_monthly,gothic,38.9583,-106.98833
+Delphinium_nuttallianum ,-5.63,0.66,mean_monthly,gothic,38.9583,-106.98833
+Descurainia_richardsonii ,-7.59,1.12,mean_monthly,gothic,38.9583,-106.98833
+Dodecatheon_pulchellum ,-7.4,0.81,mean_monthly,gothic,38.9583,-106.98833
+Draba_aurea ,-6.21,0.94,mean_monthly,gothic,38.9583,-106.98833
+Erigeron_flagellaris ,-7.95,1.11,mean_monthly,gothic,38.9583,-106.98833
+Erigeron_speciosus ,-7.31,0.83,mean_monthly,gothic,38.9583,-106.98833
+Eriogonum_subalpinum ,-7.97,0.71,mean_monthly,gothic,38.9583,-106.98833
+Eriogonum_umbellatum ,-8.05,1.35,mean_monthly,gothic,38.9583,-106.98833
+Erysimum_asperum ,-4.63,0.98,mean_monthly,gothic,38.9583,-106.98833
+Erythronium_grandiflorum ,-7,0.72,mean_monthly,gothic,38.9583,-106.98833
+Gentiana_parryi,-5.18,0.93,mean_monthly,gothic,38.9583,-106.98833
+Geranium_richardsonii ,-6.58,1.32,mean_monthly,gothic,38.9583,-106.98833
+Helianthella_quinquenervis ,-1.8,1.69,mean_monthly,gothic,38.9583,-106.98833
+Heliomeris_multiflora ,-5.93,1.01,mean_monthly,gothic,38.9583,-106.98833
+Heracleum_maximum ,-7.5,0.87,mean_monthly,gothic,38.9583,-106.98833
+Heterotheca_villosa ,-6.2,0.7,mean_monthly,gothic,38.9583,-106.98833
+Hydrophyllum_fendleri ,-8.61,0.77,mean_monthly,gothic,38.9583,-106.98833
+Lathyrus_leucanthus ,-6.88,0.8,mean_monthly,gothic,38.9583,-106.98833
+Ligularia_bigelovii ,-6.17,0.8,mean_monthly,gothic,38.9583,-106.98833
+Ligusticum_porteri ,-6.67,0.86,mean_monthly,gothic,38.9583,-106.98833
+Mahonia_repens ,-5.61,0.76,mean_monthly,gothic,38.9583,-106.98833
+Mertensia_ciliata ,-6.86,0.78,mean_monthly,gothic,38.9583,-106.98833
+Mertensia_fusiformis ,-6.38,0.73,mean_monthly,gothic,38.9583,-106.98833
+Potentilla_gracilis_v_pulcherrima ,1.5,0.58,mean_monthly,gothic,38.9583,-106.98833
+Potentilla_hippiana,1.3,0.17,mean_monthly,gothic,38.9583,-106.98833
+Taraxacum_officinale ,0.83,0.1,mean_monthly,gothic,38.9583,-106.98833
+Cassiope_tetragona,-1.86,1.08,mean_monthly,zackenberg,74.467,-20.56667
+Dryas_octopetala,-1.87,0.97,mean_monthly,zackenberg,74.467,-20.56667
+Salix_arctica,-3.63,1.61,mean_monthly,zackenberg,74.467,-20.56667
+Saxifraga_appositifolia ,-1.46,0.8,mean_monthly,zackenberg,74.467,-20.56667
+Silene_acaulis ,-3.94,1.19,mean_monthly,zackenberg,74.467,-20.56667
+Papaver_radicatum,-4.18,2.26,mean_monthly,zackenberg,74.467,-20.56667
