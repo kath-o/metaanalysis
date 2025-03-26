@@ -200,21 +200,47 @@ meta1
 meta2<-rma.mv(yi=slope,V=se2,random=~1|taxon,data=ma_data2)
 meta2
 
-
+#with modera
 ma_data2$se2<-ma_data2$se^2
 meta3<-rma.mv(yi=slope,V=se2,mods=~latitude + temperature, random=~1|taxon,data=ma_data2)
 summary(meta3)
 
+#forest plot, categorising by location
+#apply colors to match the dataset
+location_colors <- c("nunavut_archipelago" = "palevioletred1", 
+                     "nunavut_mainland" = "turquoise3", 
+                     "hokkaido" = "aquamarine4", 
+                     "zackenberg" = "orchid2", 
+                     "gothic" = "royalblue2")
 
-forest(meta1,cex.lab=0.8,cex.axis=0.8,addfit=TRUE,shade="zebra",slab = ma_data2$taxon,header ="Taxon", col="palevioletred")
-abline(v = 0, col = "violetred3", lwd = 1, lty = 1) 
+
+row_colours <- location_colors[ma_data2$location]
+
+#forest plot
+par(xpd = TRUE, mar = c(5, 4, 4, 7))
+forest(meta1, cex.lab = 0.8, cex.axis = 0.8, addfit = TRUE, shade = "zebra", slab = ma_data2$taxon, header = "Taxon", colout = row_colours, col = "palevioletred2")  
+abline(v = 0, col = "black", lwd = 1, lty = 2) 
+
+custom_titles <- c("Nunavut Archipelago", 
+                   "Nunavut Mainland", 
+                   "Hokkaido", 
+                   "Zackenberg", 
+                   "Gothic")
+
+legend("right",       
+       legend = custom_titles,   
+       col = location_colors, 
+       pch = 15,                
+       cex = 0.6, 
+       bty = "n",                
+       inset = c(-0.18, 0))      
+
 
 #latitude
-regplot(meta3,mod="latitude",bg="honeydew",ylab="Effect size (days/°C)", xlab="Latitude")
+regplot(meta3,mod="latitude",bg="lightblue1",ylab="Effect size (days/°C)", xlab="Latitude")
 
-?regplot
 
-#funnel? 
+#funnel
 funnel(meta3,level=c(90, 95, 99),lty=1,shade=c("#E0E0E0", "#EBEBEB", "#FAFAFA"),back="white" , legend=TRUE)
 
 
