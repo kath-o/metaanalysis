@@ -189,8 +189,7 @@ ma_data <- read.csv("ma_data.csv", header = TRUE)
 #initial plot
 plot(ma_data$slope,(1/ma_data$se),xlab="Slope",ylab="Precision, (1/se)")
 
-library(dplyr)
-ma_data2 <- ma_data %>% filter(se2 > 0) #removed 0 
+
 
 #meta-analysis 
 meta1<-rma(yi=slope,sei=se,mods=~1,data=ma_data2)
@@ -201,7 +200,7 @@ meta2<-rma.mv(yi=slope,V=se2,random=~1|taxon,data=ma_data2)
 meta2
 
 #with moderators: latitude
-ma_data2$se2<-ma_data2$se^2
+ma_data$se2<-ma_data$se^2
 meta3<-rma.mv(yi=slope,V=se2,mods=~latitude, random=~1|taxon,data=ma_data2)
 summary(meta3)
 
@@ -222,7 +221,7 @@ row_colours <- location_colors[ma_data2$location]
 
 #forest plot
 par(xpd = TRUE, mar = c(5, 4, 4, 9))
-forest(meta1, cex.lab = 0.8, cex.axis = 0.8, addfit = TRUE, shade = "zebra", slab = ma_data2$taxon, header = "Taxon", colout = row_colours, col = "palevioletred2")  
+forest(meta2, cex.lab = 0.8, cex.axis = 0.8, addfit = TRUE, shade = "zebra", slab = ma_data2$taxon, header = "Taxon", colout = row_colours, col = "palevioletred2")  
 abline(v = 0, col = "black", lwd = 1, lty = 2) 
 
 custom_titles <- c("Nunavut Archipelago", 
@@ -247,9 +246,11 @@ regplot(meta3,mod="latitude",bg="lightblue1",ylab="Effect size (days/°C)", xlab
 regplot(meta4,mod="latitude",bg="honeydew2",ylab="Effect size (days/°C)", xlab="Latitude")
 
 
-#funnel
-funnel(meta3,level=c(90, 95, 99),lty=1,shade=c("#E0E0E0", "#EBEBEB", "#FAFAFA"),back="white" , legend=TRUE)
+#funnel + bias estimate
+funnel(meta4,level=c(90, 95, 99),lty=1,shade=c("#E0E0E0", "#EBEBEB", "#FAFAFA"),back="white" , legend=TRUE)
 
+regtest(x=slope, sei=se, data=ma_data2,
+        model="rma", predictor="sei", ret.fit=FALSE)
 
 #map figure
 install.packages(c("terra", "sf", "ggplot2", "rnaturalearth", "rnaturalearthdata"))
@@ -263,6 +264,7 @@ mapdata <- read.csv("~/Desktop/MSc EEB/WD/metaanalysis/ma_data_map.csv", header 
 
 mapdata$longitude <- as.numeric(mapdata$longitude)
 mapdata$latitude <- as.numeric(mapdata$latitude)
+
 # Convert to terra SpatVector
 sites_vect <- vect(mapdata, geom = c("longitude", "latitude"), crs = "EPSG:4326")
 sites_df <- as.data.frame(sites_vect, xy = TRUE)
@@ -274,5 +276,19 @@ world_vect <- vect(world_sf)  # convert to terra SpatVector
 plot(world_vect, col = "lightblue1", border = "grey40", xlab = 'Longitude', ylab="Latitude")
 points(sites_vect, col = "violetred2", pch = 20, cex =1.2)
 
+#plot of temperature effect sizes 
+tempeffect <- data.frame(
+  Method = c("June Temperature", "May Temperature", "Mean Monthly Temperature"),
+  EffectSize = c(-2.6298, -1.7881, -3.3824), 
+  CI_lower = c(-5.3946, -6.2793, -4.9453),  
+  CI_upper = c(0.1351, 2.7031, -1.8194)
+)
 
+library(ggplot2)
 
+ggplot(tempeffect, aes(x = Method, y = EffectSize)) +
+  geom_point(size = 4, color = "palevioletred") +  # Dots for effect sizes
+  geom_errorbar(aes(ymin = CI_lower, ymax = CI_upper), width = 0.2) +  # Error bars for CI
+  labs(y = "Effect Size (days/°C)",
+       x = "Temperature Collection Month") + ylim(-10, 5) +
+  theme_bw()
